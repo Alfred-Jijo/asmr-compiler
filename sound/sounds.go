@@ -16,16 +16,16 @@ func playSound(soundNo int) {
 	var sound string
 	switch soundNo {
 		case 0: // Start 
-			sound = "START.mp3"
+			sound = "sound/START.mp3"
 			break 
 		case 1: // End 
-			sound = "STOP.mp3"
+			sound = "sound/STOP.mp3"
 		case 2: // Error 
-			sound = "ERROR.mp3"
+			sound = "sound/ERROR.mp3"
 		case 3: // GCM (Go Compare) 
-			sound = "GCM.mp3" 
+			sound = "sound/GCM.mp3" 
 		default: 
-			sound = "WAITING.mp3"
+			sound = "sound/WAITING.mp3"
 	}
 	
 	f, err := os.Open(sound)
@@ -50,7 +50,7 @@ func playSound(soundNo int) {
 	<-done		
 }
 
-func sound_main(soundNo int) {
+func Sound_main(soundNo int) {
 	playSound(soundNo)
 }
 
