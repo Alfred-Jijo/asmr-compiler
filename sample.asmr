@@ -1,2 +1,6 @@
-ldv byte foo 32
-ldv asdf asdf asdf
+ldv byte foo -2
+ldv byte bar 3
+plus bar bar foo
+dmp bar
+udp foo
+dmp foo

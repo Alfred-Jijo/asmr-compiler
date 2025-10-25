@@ -1,3 +1,5 @@
+package vm
+
 const Op (
 	ldr int = iota
 	str

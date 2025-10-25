@@ -1,70 +1,92 @@
 package main
 
+import (
+	"fmt"
+	"strconv"
+	"log"
+	"os"
+)
+
 var mappings map[string]byte
 
-func ParseData(Tokens []__TokenType) {
-
+func Parse(Tokens []__Token) {
+	mappings = make(map[string]byte)
 	var idx = 0;
-	loop {
-		if idx >= Tokens.len {
+	for {
+		if (idx >= len(Tokens)) {
 			break
 		}
-		switch(Tokens[idx]) 
+		switch Tokens[idx].__tokenType {
 		case LDV:
 			fmt.Println("LDV")
-			mappings[Tokens[idx + 2]], err := byte(strconv.ParseUint(Tokens[idx + 3]))
+			val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
+			mappings[Tokens[idx + 2].lexeme] = byte(val)
 			idx += 4	
 			break
 		case PLUS:
 			fmt.Println("PLUS")
+			var arg1 byte;
+			value, ok := mappings[Tokens[idx + 2].lexeme]
+			if ok {
+				arg1 = value	
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				arg1 = byte(val)
+			}
+
+			var arg2 byte;
+			value, ok = mappings[Tokens[idx + 3].lexeme]
+			if ok {
+				arg2 = value	
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
+				arg2 = byte(val)
+			}
+			mappings[Tokens[idx + 1].lexeme] = arg1 + arg2
+			idx += 4
 			break
 		case MINUS:
 			fmt.Println("SULP or MINUS")
-			break
-		case EQUAL_EQUAL:
-			fmt.Println("EQUAL_EQUAL")
-			break
-		case GREATER_THAN:
-			fmt.Println("GREATER_THAN")
-			break
-		case LESS_THAN:
-			fmt.Println("LESS_THAN")
+			var arg1 byte;
+			value, ok := mappings[Tokens[idx + 2].lexeme]
+			if ok {
+				arg1 = value	
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				arg1 = byte(val)
+			}
+
+			var arg2 byte;
+			value, ok = mappings[Tokens[idx + 3].lexeme]
+			if ok {
+				arg2 = value	
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
+				arg2 = byte(val)
+			}
+			mappings[Tokens[idx + 1].lexeme] = arg1 - arg2
+			idx += 4
 			break
 		case READ:
 			fmt.Println("READ")
+			// todo
+			idx += 2
 			break
 		case PRINT:
 			fmt.Println("PRINT")
+			var arg byte;
+			value, ok := mappings[Tokens[idx + 1].lexeme]
+			if ok {
+				arg = value	
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx + 1].lexeme)
+				arg = byte(val)
+			}
+			fmt.Printf("%d\n", arg)
+			idx += 2
 			break
 		default:
-			fmt.Println("Unknown TokenType")
+			log.Fatal("Unknown TokenType")
 		}
-	}
-	case LDV:
-		fmt.Println("LDV")
-		break
-	case PLUS:
-		fmt.Println("PLUS")
-		break
-	case MINUS:
-		fmt.Println("SULP or MINUS")
-		break
-	case EQUAL_EQUAL:
-		fmt.Println("EQUAL_EQUAL")
-		break
-	case GREATER_THAN:
-		fmt.Println("GREATER_THAN")
-		break
-	case LESS_THAN:
-		fmt.Println("LESS_THAN")
-		break
-	case READ:
-		fmt.Println("READ")
-		break
-	case PRINT:
-		fmt.Println("PRINT")
-		break
-	default:
-		fmt.Println("Unknown TokenType")
 	}
 }
