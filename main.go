@@ -42,5 +42,5 @@ func main() {
 
 	Lex(data)*/
 	
-	sound.Sound_main(3)
+	sound.Sound_main("GCM")
 }
