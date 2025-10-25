@@ -28,7 +28,7 @@ func playSound(soundName string) {
 			sound = "sound/WAITING.mp3"
 	}*/
 	
-	f, err := os.Open(soundName + ".mp3")
+	f, err := os.Open("sound/" + soundName + ".mp3")
 	if err != nil {
 		log.Fatal(err)
 	}
