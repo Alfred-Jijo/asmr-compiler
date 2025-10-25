@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"os"
 )
 
 var mappings map[string]byte
@@ -78,27 +79,54 @@ func Parse(Tokens []__Token) {
 			break
 		case READ:
 			sound.PlaySound("UDP")
-			if DEBUG {
-				fmt.Println("READ")
-			}
+			fmt.Println("READ")
+			
 			// todo
-			idx += 2
+			if (Tokens[idx + 1].lexeme == "stdin") {
+				var arg int
+				fmt.Scan(&arg)
+				barg := byte(arg)
+				mappings[Tokens[idx+2].lexeme] = barg
+			} else {
+				file, _ := os.Open(Tokens[idx + 1].lexeme)
+				buffer := make([]byte, 1)
+				_, _ = file.Read(buffer)
+				mappings[Tokens[idx+2].lexeme] = buffer[0]
+			}
+
+			idx += 3
 			break
 		case PRINT:
 			sound.PlaySound("DMP")
 			if DEBUG {
 				fmt.Println("PRINT")
 			}
-			var arg byte
-			value, ok := mappings[Tokens[idx+1].lexeme]
-			if ok {
-				arg = value
+
+			if (Tokens[idx + 1].lexeme == "stdout") {
+				var arg byte
+				value, ok := mappings[Tokens[idx+2].lexeme]
+				if ok {
+					arg = value
+				} else {
+					val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
+					arg = byte(val)
+				}
+				fmt.Printf("%d\n", arg)
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx+1].lexeme)
-				arg = byte(val)
+				var out byte;
+				value, ok := mappings[Tokens[idx+2].lexeme]
+				if ok {
+					out = value
+				} else {
+					val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
+					out = byte(val)
+				}
+
+				name := Tokens[idx + 1].lexeme
+				file, _ := os.OpenFile(name, os.O_RDWR | os.O_CREATE, 0644)
+				_, _ = file.Write([]byte{out})
 			}
-			fmt.Printf("%d\n", arg)
-			idx += 2
+			idx += 3
 			break
 		case EQUAL_EQUAL:
 			sound.PlaySound("GCM")
