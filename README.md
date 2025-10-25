@@ -1,5 +1,5 @@
 # asmr-compiler
-
+`NOTE: CURRENT IMPLEMTATION IS JUST AN INTERPRETER`
 ## Language
 
 ### IO
