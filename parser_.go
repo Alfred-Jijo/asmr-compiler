@@ -84,7 +84,7 @@ func Parse(Tokens []__Token) {
 		case READ:
 			sound.PlaySound("UDP")
 			fmt.Println("READ")
-			
+
 			// todo
 			if (Tokens[idx + 1].lexeme == "stdin") {
 				var arg int
@@ -247,6 +247,7 @@ func Parse(Tokens []__Token) {
 
 		case BREAK:
 			idx = loop_end
+			loop = false
 
 		case LOOP_CLOSE:
 			loop_end = idx + 1
