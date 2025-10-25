@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"log"
 	"os"
+	"asmr-compiler/sound"
 )
 
 var (
@@ -27,7 +28,7 @@ func ReadFile(name string) []byte {
 }
 
 func main() {
-	name := os.Args[1]
+	/*name := os.Args[1]
 	if len(os.Args) > 2 {
 		DEBUG = true
 	}
@@ -39,5 +40,7 @@ func main() {
 	// _, err := os.Stdout.Write(data)
 	// check(err, "log")
 
-	Lex(data)
+	Lex(data)*/
+	
+	sound.Sound_main(3)
 }
