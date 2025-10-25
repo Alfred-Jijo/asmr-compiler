@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -18,13 +17,17 @@ func ReadFile(name string) []byte {
 	return data
 }
 
+func Lex(data []byte){
+
+}
+
 func ParseData(data []byte) {
 
 }
 
 func main() {
-	name := os.args[1]
+	name := os.Args[1]
 	data := ReadFile(name)
-	os.stdout.Write(data)
+	os.Stdout.Write(data)
 	//ParseData(data)
 }
