@@ -15,6 +15,10 @@ gcmg bar 3
     alt dmp stdout 21
 end
 
+udp stdin foobar
+
+dmp stdout foobar
+
 ldv byte count 5
 spin
     gcmg count 0
