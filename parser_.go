@@ -1,6 +1,7 @@
 package main
 
 import (
+	"asmr-compiler/sound"
 	"fmt"
 	"log"
 	"strconv"
@@ -17,6 +18,7 @@ func Parse(Tokens []__Token) {
 		}
 		switch Tokens[idx].__tokenType {
 		case LDV:
+			sound.PlaySound("LDV")
 			if DEBUG {
 				fmt.Println("LDV")
 			}
@@ -25,6 +27,7 @@ func Parse(Tokens []__Token) {
 			idx += 4
 			break
 		case PLUS:
+			sound.PlaySound("PLUS")
 			if DEBUG {
 				fmt.Println("PLUS")
 			}
@@ -49,6 +52,7 @@ func Parse(Tokens []__Token) {
 			idx += 4
 			break
 		case MINUS:
+			sound.PlaySound("SULP")
 			if DEBUG {
 				fmt.Println("SULP or MINUS")
 			}
@@ -73,6 +77,7 @@ func Parse(Tokens []__Token) {
 			idx += 4
 			break
 		case READ:
+			// sound.PlaySound("READ")
 			if DEBUG {
 				fmt.Println("READ")
 			}
@@ -80,6 +85,7 @@ func Parse(Tokens []__Token) {
 			idx += 2
 			break
 		case PRINT:
+			// sound.PlaySound("PRINT")
 			if DEBUG {
 				fmt.Println("PRINT")
 			}
@@ -95,6 +101,7 @@ func Parse(Tokens []__Token) {
 			idx += 2
 			break
 		case EQUAL_EQUAL:
+			sound.PlaySound("GCM")
 			if DEBUG {
 				fmt.Println("GCME")
 			}
@@ -126,6 +133,7 @@ func Parse(Tokens []__Token) {
 				idx += offset + 1
 			}
 		case LESS_THAN:
+			sound.PlaySound("GCM")
 			if DEBUG {
 				fmt.Println("GCML")
 			}
@@ -157,6 +165,7 @@ func Parse(Tokens []__Token) {
 				idx += offset + 1
 			}
 		case GREATER_THAN:
+			sound.PlaySound("GCM")
 			if DEBUG {
 				fmt.Println("GCMG")
 			}
@@ -188,16 +197,19 @@ func Parse(Tokens []__Token) {
 				idx += offset + 1
 			}
 		case ELSE:
+			sound.PlaySound("ELSE")
 			var offset = 1
 			for Tokens[idx+offset].__tokenType != END {
 				offset += 1
 			}
 			idx += offset + 1
 		case END:
+			sound.PlaySound("END")
 			idx += 1
 			break
 
 		default:
+			sound.PlaySound("ERROR")
 			log.Fatal("Unknown TokenType")
 		}
 	}
