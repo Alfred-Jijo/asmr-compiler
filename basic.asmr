@@ -1,0 +1,18 @@
+ldv byte foo 2
+ldv byte bar 3
+
+plus bar bar foo
+sulp bar bar foo
+
+dmp stdout bar
+
+gcme bar 3
+    dmp stdout 12
+    alt dmp stdout 21
+end
+
+gcmg bar 3
+    dmp stdout 12
+    alt dmp stdout 21
+end
+
