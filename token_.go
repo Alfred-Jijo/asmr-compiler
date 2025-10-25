@@ -21,8 +21,6 @@ const (
 	DECL
 	CALL
 	BRANCH
-	LIST
-	END_LIST
 	NONE
 )
 
@@ -55,10 +53,6 @@ var TokenID = map[__TokenType]string{
 
 	//selection
 	BRANCH: "branc",
-
-	//list
-	LIST:     "list",
-	END_LIST: "tsil",
 }
 
 type __Token struct {
@@ -115,12 +109,6 @@ func printEnumVal(toktype __TokenType) {
 		break
 	case BRANCH:
 		fmt.Println("BRANCH")
-		break
-	case LIST:
-		fmt.Println("LIST")
-		break
-	case END_LIST:
-		fmt.Println("END_LIST")
 		break
 	case NONE:
 		fmt.Println("NONE")
