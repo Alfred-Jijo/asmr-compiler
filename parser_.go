@@ -2,185 +2,201 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"log"
+	"strconv"
 )
 
 var mappings map[string]byte
 
 func Parse(Tokens []__Token) {
 	mappings = make(map[string]byte)
-	var idx = 0;
+	var idx = 0
 	for {
-		if (idx >= len(Tokens)) {
+		if idx >= len(Tokens) {
 			break
 		}
 		switch Tokens[idx].__tokenType {
 		case LDV:
-			fmt.Println("LDV")
-			val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
-			mappings[Tokens[idx + 2].lexeme] = byte(val)
-			idx += 4	
+			if DEBUG {
+				fmt.Println("LDV")
+			}
+			val, _ := strconv.Atoi(Tokens[idx+3].lexeme)
+			mappings[Tokens[idx+2].lexeme] = byte(val)
+			idx += 4
 			break
 		case PLUS:
-			fmt.Println("PLUS")
-			var arg1 byte;
-			value, ok := mappings[Tokens[idx + 2].lexeme]
+			if DEBUG {
+				fmt.Println("PLUS")
+			}
+			var arg1 byte
+			value, ok := mappings[Tokens[idx+2].lexeme]
 			if ok {
-				arg1 = value	
+				arg1 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
 				arg1 = byte(val)
 			}
 
-			var arg2 byte;
-			value, ok = mappings[Tokens[idx + 3].lexeme]
+			var arg2 byte
+			value, ok = mappings[Tokens[idx+3].lexeme]
 			if ok {
-				arg2 = value	
+				arg2 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+3].lexeme)
 				arg2 = byte(val)
 			}
-			mappings[Tokens[idx + 1].lexeme] = arg1 + arg2
+			mappings[Tokens[idx+1].lexeme] = arg1 + arg2
 			idx += 4
 			break
 		case MINUS:
-			fmt.Println("SULP or MINUS")
-			var arg1 byte;
-			value, ok := mappings[Tokens[idx + 2].lexeme]
+			if DEBUG {
+				fmt.Println("SULP or MINUS")
+			}
+			var arg1 byte
+			value, ok := mappings[Tokens[idx+2].lexeme]
 			if ok {
-				arg1 = value	
+				arg1 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
 				arg1 = byte(val)
 			}
 
-			var arg2 byte;
-			value, ok = mappings[Tokens[idx + 3].lexeme]
+			var arg2 byte
+			value, ok = mappings[Tokens[idx+3].lexeme]
 			if ok {
-				arg2 = value	
+				arg2 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 3].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+3].lexeme)
 				arg2 = byte(val)
 			}
-			mappings[Tokens[idx + 1].lexeme] = arg1 - arg2
+			mappings[Tokens[idx+1].lexeme] = arg1 - arg2
 			idx += 4
 			break
 		case READ:
-			fmt.Println("READ")
+			if DEBUG {
+				fmt.Println("READ")
+			}
 			// todo
 			idx += 2
 			break
 		case PRINT:
-			fmt.Println("PRINT")
-			var arg byte;
-			value, ok := mappings[Tokens[idx + 1].lexeme]
+			if DEBUG {
+				fmt.Println("PRINT")
+			}
+			var arg byte
+			value, ok := mappings[Tokens[idx+1].lexeme]
 			if ok {
-				arg = value	
+				arg = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 1].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+1].lexeme)
 				arg = byte(val)
 			}
 			fmt.Printf("%d\n", arg)
 			idx += 2
 			break
 		case EQUAL_EQUAL:
-			fmt.Println("GCME")
-			var arg1 byte;
-			value, ok := mappings[Tokens[idx + 1].lexeme]
+			if DEBUG {
+				fmt.Println("GCME")
+			}
+			var arg1 byte
+			value, ok := mappings[Tokens[idx+1].lexeme]
 			if ok {
-				arg1 = value	
+				arg1 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 1].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+1].lexeme)
 				arg1 = byte(val)
 			}
 
-			var arg2 byte;
-			value, ok = mappings[Tokens[idx + 2].lexeme]
+			var arg2 byte
+			value, ok = mappings[Tokens[idx+2].lexeme]
 			if ok {
-				arg2 = value	
+				arg2 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
 				arg2 = byte(val)
 			}
-			
+
 			if arg1 == arg2 {
 				idx += 3
 			} else {
 				var offset = 3
-				for (Tokens[idx + offset].__tokenType != ELSE) {
+				for Tokens[idx+offset].__tokenType != ELSE {
 					offset += 1
 				}
 				idx += offset + 1
 			}
 		case LESS_THAN:
-			fmt.Println("GCML")
-			var arg1 byte;
-			value, ok := mappings[Tokens[idx + 1].lexeme]
+			if DEBUG {
+				fmt.Println("GCML")
+			}
+			var arg1 byte
+			value, ok := mappings[Tokens[idx+1].lexeme]
 			if ok {
-				arg1 = value	
+				arg1 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 1].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+1].lexeme)
 				arg1 = byte(val)
 			}
 
-			var arg2 byte;
-			value, ok = mappings[Tokens[idx + 2].lexeme]
+			var arg2 byte
+			value, ok = mappings[Tokens[idx+2].lexeme]
 			if ok {
-				arg2 = value	
+				arg2 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
 				arg2 = byte(val)
 			}
-			
+
 			if arg1 < arg2 {
 				idx += 3
 			} else {
 				var offset = 3
-				for (Tokens[idx + offset].__tokenType != ELSE) {
+				for Tokens[idx+offset].__tokenType != ELSE {
 					offset += 1
 				}
 				idx += offset + 1
 			}
 		case GREATER_THAN:
-			fmt.Println("GCML")
-			var arg1 byte;
-			value, ok := mappings[Tokens[idx + 1].lexeme]
+			if DEBUG {
+				fmt.Println("GCMG")
+			}
+			var arg1 byte
+			value, ok := mappings[Tokens[idx+1].lexeme]
 			if ok {
-				arg1 = value	
+				arg1 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 1].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+1].lexeme)
 				arg1 = byte(val)
 			}
 
-			var arg2 byte;
-			value, ok = mappings[Tokens[idx + 2].lexeme]
+			var arg2 byte
+			value, ok = mappings[Tokens[idx+2].lexeme]
 			if ok {
-				arg2 = value	
+				arg2 = value
 			} else {
-				val, _ := strconv.Atoi(Tokens[idx + 2].lexeme)
+				val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
 				arg2 = byte(val)
 			}
-			
+
 			if arg1 > arg2 {
 				idx += 3
 			} else {
 				var offset = 3
-				for (Tokens[idx + offset].__tokenType != ELSE) {
+				for Tokens[idx+offset].__tokenType != ELSE {
 					offset += 1
 				}
 				idx += offset + 1
 			}
 		case ELSE:
 			var offset = 1
-			for (Tokens[idx + offset].__tokenType != END) {
+			for Tokens[idx+offset].__tokenType != END {
 				offset += 1
 			}
 			idx += offset + 1
 		case END:
 			idx += 1
 			break
-	
+
 		default:
 			log.Fatal("Unknown TokenType")
 		}

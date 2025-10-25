@@ -28,14 +28,14 @@ func Lex(data []byte) []__Token {
 		} else {
 			tokens = append(tokens, __Token{__tokenType: NONE, lexeme: line})
 		}
-		if DEBUG {
-			for _, token := range tokens {
-				fmt.Println(token.lexeme)
-				printEnumVal(token.__tokenType)
-			}
-		}
 	}
-	fmt.Println(tokens)
+	if DEBUG {
+		for _, token := range tokens {
+			fmt.Println(token.lexeme)
+			printEnumVal(token.__tokenType)
+		}
+		fmt.Println(tokens)
+	}
 	return tokens
 }
 
