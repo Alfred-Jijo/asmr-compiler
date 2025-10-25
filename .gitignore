@@ -33,4 +33,5 @@ go.work.sum
 
 out/
 
-asmr-compiler
+asmr-compilertest.txt
+test.txt
