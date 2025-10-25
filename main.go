@@ -1,33 +1,55 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
-func check(e error) {
+var (
+	DEBUG = false
+)
+
+func check(e error, printFlag string) {
 	if e != nil {
-		log.Fatal(e)
+		if printFlag == "log" {
+			log.Fatal(e)
+		} else {
+			panic(e)
+		}
 	}
 }
 
 func ReadFile(name string) []byte {
 	data, err := os.ReadFile(name)
-	check(err)
+	check(err, "log")
 	return data
 }
 
-func Lex(data []byte){
+func Lex(data []byte) {
+	line := string(data)
+	lines := strings.Split(line, " ")
 
+	if DEBUG {
+		for _, line := range lines {
+			fmt.Println(line)
+		}
+	}
 }
 
 func ParseData(data []byte) {
-
 }
 
 func main() {
 	name := os.Args[1]
+	if len(os.Args) > 2 {
+		DEBUG = true
+	}
 	data := ReadFile(name)
-	os.Stdout.Write(data)
-	//ParseData(data)
+
+	// _, err := os.Stdout.Write(data)
+	// check(err, "log")
+
+	Lex(data)
 }
