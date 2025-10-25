@@ -34,11 +34,10 @@ func main() {
 	if DEBUG {
 		fmt.Printf("Reading file %s\n", name)
 	}
-	token_main()
-	// data := ReadFile(name)
+	data := ReadFile(name)
 
 	// _, err := os.Stdout.Write(data)
 	// check(err, "log")
 
-	//Lex(data)
+	Lex(data)
 }
