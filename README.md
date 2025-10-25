@@ -3,7 +3,7 @@
 #### COLLABORATORS
 @Alfred-Jijo
 
-@GarethSimmans
+[@GarethSimmans](https://github.com/GarethSimmans)
 
 @AlxFG
 
