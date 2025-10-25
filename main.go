@@ -5,22 +5,14 @@ import (
 	"os"
 )
 
-func CreateFile() {
-	fmt.Println("Writing file")
-	file, err := os.Create("test.txt")
+func ReadFile(name string) []bytes {
+	data, err != os.ReadFile(name) 
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	length, err := file.WriteString("Welcome to Golang. This demonstrates file operations.")
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("File name: %s\n", file.Name())
-	fmt.Printf("File length: %d bytes\n", length)
+	return data
 }
-func main() {
 
+func main() {
+	name = os.args[1]
 }
