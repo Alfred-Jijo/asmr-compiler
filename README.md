@@ -1,4 +1,11 @@
-# asmr-compiler
+<img width="161" height="28" alt="image" src="https://github.com/user-attachments/assets/b28db431-ad36-4b84-b060-aee75d02b5a9" /># asmr-compiler
+#### COLLABORATORS
+@Alfred-Jijo
+@GarethSimmans
+@AlxFG
+@samtowler
+
+---
 `NOTE: CURRENT IMPLEMTATION IS JUST AN INTERPRETER`
 ## Language
 
