@@ -11,7 +11,7 @@ import (
 )
 
 func PlaySound(soundName string) {
-	f, err := os.Open("sound/" + soundName + ".mp3")
+	f, err := os.Open("sound/mp3" + soundName + ".mp3")
 	if err != nil {
 		return
 	}
