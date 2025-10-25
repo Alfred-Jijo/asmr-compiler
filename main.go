@@ -18,6 +18,13 @@ func ReadFile(name string) []byte {
 	return data
 }
 
+func ParseData(data []byte) {
+
+}
+
 func main() {
 	name := os.args[1]
+	data := ReadFile(name)
+	os.stdout.Write(data)
+	//ParseData(data)
 }
