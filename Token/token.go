@@ -1,6 +1,6 @@
 package Token
 
-struct token{
+type _token struct {
 	type TokenType;
 	lexeme string;
 }
