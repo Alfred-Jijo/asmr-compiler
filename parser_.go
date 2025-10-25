@@ -13,22 +13,27 @@ var mappings map[string]byte
 func Parse(Tokens []__Token) {
 	mappings = make(map[string]byte)
 	var idx = 0
-	var loop = false
-	var loop_idx = 0
+	var loop_body = 0
 	var loop_end = 0
 	for {
 		if idx >= len(Tokens) {
 			break
 		}
-
 		switch Tokens[idx].__tokenType {
 		case LDV:
 			sound.PlaySound("LDV")
 			if DEBUG {
 				fmt.Println("LDV")
 			}
-			val, _ := strconv.Atoi(Tokens[idx+3].lexeme)
-			mappings[Tokens[idx+2].lexeme] = byte(val)
+			var arg byte
+			value, ok := mappings[Tokens[idx+3].lexeme]
+			if ok {
+				arg = value
+			} else {
+				val, _ := strconv.Atoi(Tokens[idx+3].lexeme)
+				arg = byte(val)
+			}
+			mappings[Tokens[idx+2].lexeme] = arg
 			idx += 4
 			break
 		case PLUS:
@@ -85,7 +90,6 @@ func Parse(Tokens []__Token) {
 			sound.PlaySound("UDP")
 			fmt.Println("READ")
 
-			// todo
 			if (Tokens[idx + 1].lexeme == "stdin") {
 				var arg int
 				fmt.Scan(&arg)
@@ -235,25 +239,26 @@ func Parse(Tokens []__Token) {
 				offset += 1
 			}
 			idx += offset + 1
+
 		case END:
 			sound.PlaySound("END")
 			idx += 1
 			break
 
 		case LOOP:
+			loop_body = idx + 1
+			loop_end = loop_body
+			for Tokens[loop_end].__tokenType != LOOP_CLOSE {
+				loop_end += 1
+			}
+			loop_end += 1
 			idx += 1
-			loop_idx = idx
-			loop = true
 
 		case BREAK:
 			idx = loop_end
-			loop = false
 
 		case LOOP_CLOSE:
-			loop_end = idx + 1
-			if loop {
-				idx = loop_idx
-			}
+			idx = loop_body
 
 		default:
 			sound.PlaySound("ERROR")
