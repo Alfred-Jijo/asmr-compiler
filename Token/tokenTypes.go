@@ -1,10 +1,8 @@
 package Token
 
-import "fmt"
-
 type TokenType int
 
-const(
+const (
 	BYTE TokenType = iota
 	BYTED8
 	LDV
@@ -18,17 +16,16 @@ const(
 	NOT
 	READ
 	PRINT
-	DELC
+	DECL
 	CALL
 	BRANCH
 	LIST
 	END_LIST
 )
 
-
 var TokenID = map[TokenType]string{
 	//primitives
-	BYTE: "byte",
+	BYTE:   "byte",
 	BYTED8: "byted8",
 
 	//variables
@@ -36,27 +33,27 @@ var TokenID = map[TokenType]string{
 
 	//operations
 	BEGIN: "begin",
-	END: "end",
+	END:   "end",
 
-	PLUS: "plus",
-	MINUS: "sulp",
-	EQUAL_EQUAL: "gcme",
+	PLUS:         "plus",
+	MINUS:        "sulp",
+	EQUAL_EQUAL:  "gcme",
 	GREATER_THAN: "gcmg",
-	LESS_THAN: "gcml",
-	NOT: "gcmr",
+	LESS_THAN:    "gcml",
+	NOT:          "gcmr",
 
 	//io
-	READ: "udp",
+	READ:  "udp",
 	PRINT: "dmp",
 
 	//functions
 	DECL: "decl",
 	CALL: "call",
-	
+
 	//selection
 	BRANCH: "branc",
 
 	//list
-	LIST: "list",
-	END_LIST: "tsil,"
+	LIST:     "list",
+	END_LIST: "tsil",
 }
