@@ -13,39 +13,29 @@
 `NOTE: CURRENT IMPLEMTATION IS JUST AN INTERPRETER`
 ## Language
 
-### IO
-for output to the console
+### Types
 ```asmr
-call dmp literal
+byte
 ```
-for reading input from the console
+#### Assignment
 ```asmr
-call udp var
+ldv byte [variable] [var|number]
 ```
-
-### primitives
-the only types supported in asmr lang is `byte` 
-
-### ASSIGNMENT
-to assign variables
+### Control Flow
 ```asmr
-ldv type name literal
+gcm[e|l|g]
+    [operation]
+alt
+    [operation]
+end
 ```
-
-### OPERATORS
+### Operators
 ```asmr
-... plus ...
-... sulp ...
+plus dest [var|num] [var|num]
+sulp dest [var|num] [var|num]
+dmp stream [var|num]
+udp stream [var|num]
 ```
-asmr lang only supports addition with `plus`
-and subtraction with `sulp`.
-
-### COMPARISONS
-use the `gcm` (gocompare) keyword with relevant letters
-```asmr
-    gmce ... ...
-    gmcg ... ... 
-    gmcl ... ...
-    gmcn ... ...
-```
-Letters are self-explanatory like the rest of this language.
+> [!NOTE]  
+> `stream` for the `dump` and `undump` operations are like `C`:
+>     - `stdin` and `stdout` or `file` 
