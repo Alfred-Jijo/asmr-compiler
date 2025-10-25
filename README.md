@@ -23,25 +23,8 @@ for reading input from the console
 call udp var
 ```
 
-### LIST
-
-to declare a list 
-```asmr
-list type elem... tsil
-```
-`tsil` is used to end a list decl
-
-### FUNCTION
-to declare a function
-```asmr
-decl name arg ... return 
-begin
-    ...
-end
-```
-
 ### primitives
-the only types supported in asmr lang is `byte` and `byted8` for a single bit
+the only types supported in asmr lang is `byte` 
 
 ### ASSIGNMENT
 to assign variables
