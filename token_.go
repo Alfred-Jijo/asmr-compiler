@@ -1,9 +1,9 @@
-package Token
+package main
 
-type TokenType int
+type __TokenType int
 
 const (
-	BYTE TokenType = iota
+	BYTE __TokenType = iota
 	BYTED8
 	LDV
 	BEGIN
@@ -23,7 +23,7 @@ const (
 	END_LIST
 )
 
-var TokenID = map[TokenType]string{
+var TokenID = map[__TokenType]string{
 	//primitives
 	BYTE:   "byte",
 	BYTED8: "byted8",
@@ -56,4 +56,9 @@ var TokenID = map[TokenType]string{
 	//list
 	LIST:     "list",
 	END_LIST: "tsil",
+}
+
+type __Token struct {
+	tokenType __TokenType
+	lexeme    string
 }
