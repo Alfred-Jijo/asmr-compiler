@@ -10,8 +10,14 @@
 [@samtowler](https://github.com/samtowler)
 
 ---
-`NOTE: CURRENT IMPLEMTATION IS JUST AN INTERPRETER`
+> [!IMPORTANT]  
+> Current implementation of this Language is neither complete or a compiler.
+ 
 ## Language
+
+### Description
+`asmr` lang is a assembly inspired language that outputs audio depending on the current operation it is executing
+and is a submission for HackNotts '25. 
 
 ### Types
 ```asmr
