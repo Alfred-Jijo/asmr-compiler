@@ -1,6 +1,9 @@
 ldv byte foo 2
 ldv byte bar 3
+
 plus bar bar foo
+sulp bar bar foo
+
 dmp bar
 gcme bar 3
     dmp 12
@@ -11,5 +14,4 @@ gcmg bar 3
     dmp 12
     alt dmp 21
 end
-
 dmp 1

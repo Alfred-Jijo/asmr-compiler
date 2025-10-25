@@ -77,7 +77,7 @@ func Parse(Tokens []__Token) {
 			idx += 4
 			break
 		case READ:
-			// sound.PlaySound("READ")
+			sound.PlaySound("UDP")
 			if DEBUG {
 				fmt.Println("READ")
 			}
@@ -85,7 +85,7 @@ func Parse(Tokens []__Token) {
 			idx += 2
 			break
 		case PRINT:
-			// sound.PlaySound("PRINT")
+			sound.PlaySound("DMP")
 			if DEBUG {
 				fmt.Println("PRINT")
 			}
@@ -197,7 +197,7 @@ func Parse(Tokens []__Token) {
 				idx += offset + 1
 			}
 		case ELSE:
-			sound.PlaySound("ELSE")
+			sound.PlaySound("ALT")
 			var offset = 1
 			for Tokens[idx+offset].__tokenType != END {
 				offset += 1
