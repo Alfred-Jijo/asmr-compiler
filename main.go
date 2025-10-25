@@ -40,10 +40,6 @@ func main() {
 	// _, err := os.Stdout.Write(data)
 	// check(err, "log")
 
-	Lex(data)
-
 	tokens := Lex(data)
 	Parse(tokens)
-
-	// sound.Sound_main("GCM")
 }
