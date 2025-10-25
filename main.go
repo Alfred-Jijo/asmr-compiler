@@ -41,8 +41,13 @@ func main() {
 	// check(err, "log")
 
 	Lex(data)*/
+<<<<<<< HEAD
 
 	sound.Sound_main(3)
 	tokens := Lex(data)
 	Parse(tokens)
+=======
+	
+	sound.Sound_main("GCM")
+>>>>>>> origin/asmr-audio
 }

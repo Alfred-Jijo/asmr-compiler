@@ -12,8 +12,8 @@ import (
 //sound Types
 var ()
 
-func playSound(soundNo int) {
-	var sound string
+func playSound(soundName string) {
+	/*var sound string
 	switch soundNo {
 		case 0: // Start 
 			sound = "sound/START.mp3"
@@ -26,9 +26,9 @@ func playSound(soundNo int) {
 			sound = "sound/GCM.mp3" 
 		default: 
 			sound = "sound/WAITING.mp3"
-	}
+	}*/
 	
-	f, err := os.Open(sound)
+	f, err := os.Open("sound/" + soundName + ".mp3")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -50,8 +50,8 @@ func playSound(soundNo int) {
 	<-done		
 }
 
-func Sound_main(soundNo int) {
-	playSound(soundNo)
+func Sound_main(soundName string) {
+	playSound(soundName)
 }
 
 
