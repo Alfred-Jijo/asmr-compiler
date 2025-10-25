@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type __TokenType int
 
 const (
@@ -61,4 +65,37 @@ var TokenID = map[__TokenType]string{
 type __Token struct {
 	tokenType __TokenType
 	lexeme    string
+}
+
+// --- NEW CODE STARTS HERE ---
+
+// 1. Define the reverse map
+var Keywords = make(map[string]__TokenType)
+
+// 2. Populate the map automatically on program start
+func init() {
+	for tokenType, keyword := range TokenID {
+		Keywords[keyword] = tokenType
+	}
+}
+
+// 3. Example of how to use it
+func token_main() {
+	if DEBUG {
+		// Simulate reading these words from a file
+		words := []string{"byte", "ldv", "myVariable", "sulp"}
+
+		for _, word := range words {
+			// Look up the word in our new Keywords map
+			tokenType, found := Keywords[word]
+
+			if found {
+				// It's a keyword!
+				fmt.Printf("Read: '%s' -> Found keyword! Type: %d\n", word, tokenType)
+			} else {
+				// It's not a keyword
+				fmt.Printf("Read: '%s' -> Not a keyword (maybe an identifier?)\n", word)
+			}
+		}
+	}
 }

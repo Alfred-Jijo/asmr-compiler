@@ -11,7 +11,7 @@ func Lex(data []byte) {
 
 	tokens []__Token;
 	for _, line := range lines{
-		
+
 		tokens.append(__Token{tokenType:  ,lexeme: _})
 	}
 

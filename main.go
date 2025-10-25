@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 )
@@ -30,10 +31,14 @@ func main() {
 	if len(os.Args) > 2 {
 		DEBUG = true
 	}
-	data := ReadFile(name)
+	if DEBUG {
+		fmt.Printf("Reading file %s\n", name)
+	}
+	token_main()
+	// data := ReadFile(name)
 
 	// _, err := os.Stdout.Write(data)
 	// check(err, "log")
 
-	Lex(data)
+	//Lex(data)
 }
