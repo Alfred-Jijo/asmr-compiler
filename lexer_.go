@@ -8,7 +8,7 @@ import (
 
 var Keywords = make(map[string]__TokenType)
 
-func Lex(data []byte) {
+func Lex(data []byte) []__Token {
 	line := string(data)
 	lines := splitMDelim(line, " \n")
 
@@ -28,14 +28,15 @@ func Lex(data []byte) {
 		} else {
 			tokens = append(tokens, __Token{__tokenType: NONE, lexeme: line})
 		}
-		if DEBUG {
-			for _, token := range tokens {
-				fmt.Println(token.lexeme)
-				printEnumVal(token.__tokenType)
-			}
-		}
 	}
-	fmt.Println(tokens)
+	if DEBUG {
+		for _, token := range tokens {
+			fmt.Println(token.lexeme)
+			printEnumVal(token.__tokenType)
+		}
+		fmt.Println(tokens)
+	}
+	return tokens
 }
 
 func populateRmap() {

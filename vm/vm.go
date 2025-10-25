@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+package vm
+
+>>>>>>> test
 const Op (
 	ldr int = iota
 	str
