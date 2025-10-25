@@ -12,10 +12,14 @@ var mappings map[string]byte
 func Parse(Tokens []__Token) {
 	mappings = make(map[string]byte)
 	var idx = 0
+	var loop = false
+	var loop_idx = 0
+	var loop_end = 0
 	for {
 		if idx >= len(Tokens) {
 			break
 		}
+
 		switch Tokens[idx].__tokenType {
 		case LDV:
 			sound.PlaySound("LDV")
@@ -207,6 +211,20 @@ func Parse(Tokens []__Token) {
 			sound.PlaySound("END")
 			idx += 1
 			break
+
+		case LOOP:
+			idx += 1
+			loop_idx = idx
+			loop = true
+
+		case BREAK:
+			idx = loop_end
+
+		case LOOP_CLOSE:
+			loop_end = idx + 1
+			if loop {
+				idx = loop_idx
+			}
 
 		default:
 			sound.PlaySound("ERROR")

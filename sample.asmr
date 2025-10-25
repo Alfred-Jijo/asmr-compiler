@@ -12,4 +12,13 @@ gcmg bar 3
     alt dmp 21
 end
 
-dmp 1
+ldv byte count 5
+spin
+    gcmg count 0
+        sulp count count 1
+    alt
+        crash
+    end
+    dmp count
+flight
+dmp count

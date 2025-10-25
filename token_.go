@@ -19,6 +19,9 @@ const (
 	ELSE
 	END
 	NONE
+	LOOP
+	BREAK
+	LOOP_CLOSE
 )
 
 var TokenID = map[__TokenType]string{
@@ -48,6 +51,11 @@ var TokenID = map[__TokenType]string{
 	//selection
 	ELSE: "alt",
 	END:   "end",
+
+	//loop
+	LOOP: "spin",
+	BREAK: "crash",
+	LOOP_CLOSE: "flight",
 }
 
 type __Token struct {
