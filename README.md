@@ -1,13 +1,13 @@
 # asmr-compiler
 
 #### COLLABORATORS
-@Alfred-Jijo
+[@Alfred-Jijo](https://github.com/Alfred-Jijo)
 
 [@GarethSimmans](https://github.com/GarethSimmans)
 
-@AlxFG
+[@AlxFG](https://github.com/AlxFG)
 
-@samtowler
+[@samtowler](https://github.com/samtowler)
 
 ---
 `NOTE: CURRENT IMPLEMTATION IS JUST AN INTERPRETER`
