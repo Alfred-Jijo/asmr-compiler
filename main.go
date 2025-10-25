@@ -41,6 +41,8 @@ func main() {
 	// check(err, "log")
 
 	Lex(data)*/
-	
+
 	sound.Sound_main(3)
+	tokens := Lex(data)
+	Parse(tokens)
 }
