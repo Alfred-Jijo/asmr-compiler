@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"regexp"
 )
 
 var mappings map[string]byte
@@ -125,11 +126,22 @@ func Parse(Tokens []__Token) {
 				value, ok := mappings[Tokens[idx+2].lexeme]
 				if ok {
 					arg = value
+					fmt.Printf("%d\n", arg)
 				} else {
-					val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
-					arg = byte(val)
+					re := regexp.MustCompilePOSIX(`".+`);
+					if (re.MatchString(Tokens[idx + 2].lexeme)) {
+						term := regexp.MustCompilePOSIX(`.+"`);
+						for term.MatchString(Tokens[idx + 2].lexeme) != true {
+							fmt.Printf("%s ", Tokens[idx+2].lexeme)
+							idx += 1
+						}
+						fmt.Println(Tokens[idx+2].lexeme)
+					} else {
+						val, _ := strconv.Atoi(Tokens[idx+2].lexeme)
+						arg = byte(val)
+						fmt.Printf("%d\n", arg)
+					}
 				}
-				fmt.Printf("%d\n", arg)
 			} else {
 				var out byte
 				value, ok := mappings[Tokens[idx+2].lexeme]

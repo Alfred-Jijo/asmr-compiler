@@ -1,3 +1,4 @@
+dmp stdout "Hello, World! yes"
 udp stdin foobar
 
 dmp stdout foobar
