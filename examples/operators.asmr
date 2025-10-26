@@ -1,0 +1,8 @@
+ldv byte r1 1
+ldv byte r2 2
+
+plus r3 r1 r2
+dmp stdout r3
+
+sulp r1 r3 r2
+dmp stdout r3

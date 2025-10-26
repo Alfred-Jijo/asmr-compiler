@@ -1,0 +1,5 @@
+ldv byte num1 12
+ldv byte num2 2
+
+dmp stdout num1
+dmp stdout num2

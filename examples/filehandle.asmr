@@ -1,0 +1,5 @@
+udp stdin foo
+dmp test.txt foo
+
+udp test.txt bar
+dmp stdout bar
