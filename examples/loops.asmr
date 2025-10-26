@@ -9,7 +9,6 @@ spin
     ldv byte sec next
     gcmg fir 22
         crash
-    alt
     end
 flight
 

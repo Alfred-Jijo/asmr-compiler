@@ -255,13 +255,13 @@ func Parse(Tokens []__Token) {
 				idx += 3
 			} else {
 				var offset = 3
-				for Tokens[idx+offset].__tokenType != ELSE {
+				for Tokens[idx+offset].__tokenType != ELSE && Tokens[idx+offset].__tokenType != END {
 					offset += 1
 				}
-				idx += offset + 1
-				if NDEBUG {
+				if NDEBUG && Tokens[idx+offset].__tokenType == ELSE {
 					sound.PlaySound("ALT")
 				}
+				idx += offset + 1
 			}
 		case ELSE:
 			var offset = 1
@@ -297,7 +297,7 @@ func Parse(Tokens []__Token) {
 
 		case LOOP_CLOSE:
 			if NDEBUG {
-				sound.PlaySound("LOOP_c")
+				sound.PlaySound("FLIGHT")
 			}
 			idx = loopBody
 
