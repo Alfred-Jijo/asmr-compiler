@@ -29,7 +29,7 @@ ldv byte [variable] [var|number]
 ```
 ### Control Flow
 ```asmr
-gcm[e|l|g]
+gcm[e|l|g] [condition]
     [operation]
 alt
     [operation]
