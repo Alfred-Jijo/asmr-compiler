@@ -1,0 +1,16 @@
+ldv byte foo 4
+ldv byte bar 5
+
+gcme foo bar
+    dmp stdout 0
+alt
+    gcmg foo bar
+        dmp stdout 1
+    alt
+        gcml foo bar
+            dmp stdout 10
+        alt
+            dmp stdout 100
+        end
+    end
+end
