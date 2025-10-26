@@ -247,11 +247,11 @@ func Parse(Tokens []__Token) {
 					offset += 1
 				}
 				idx += offset + 1
+				if NDEBUG {
+					sound.PlaySound("ALT")
+				}
 			}
 		case ELSE:
-			if NDEBUG {
-				sound.PlaySound("ALT")
-			}
 			var offset = 1
 			for Tokens[idx+offset].__tokenType != END {
 				offset += 1
