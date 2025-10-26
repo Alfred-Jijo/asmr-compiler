@@ -279,7 +279,7 @@ func Parse(Tokens []__Token) {
 
 		case LOOP:
 			if NDEBUG {
-				sound.PlaySound("LOOP_s")
+				sound.PlaySound("SPIN")
 			}
 			loopBody = idx + 1
 			loopEnd = loopBody
