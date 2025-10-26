@@ -1,17 +1,1 @@
-dmp stdout "Guessing Game"
-ldv byte guess_num 2
-
-spin
-    udp stdin user_guess
-    gcme user_guess guess_num
-        dmp stdout "Well Done!"
-        crash
-    alt
-        dmp stdout "Try Again!"
-        gcmg user_guess guess_num
-            dmp stdout "Less!"
-        alt
-            dmp stdout "More!"
-        end
-    end
-flight
+spin crash flight

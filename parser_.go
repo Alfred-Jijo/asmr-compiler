@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strconv"
 	"regexp"
+	"strconv"
 )
 
 var mappings map[string]byte
@@ -128,10 +128,10 @@ func Parse(Tokens []__Token) {
 					arg = value
 					fmt.Printf("%d\n", arg)
 				} else {
-					re := regexp.MustCompilePOSIX(`".+`);
-					if (re.MatchString(Tokens[idx + 2].lexeme)) {
-						term := regexp.MustCompilePOSIX(`.+"`);
-						for term.MatchString(Tokens[idx + 2].lexeme) != true {
+					re := regexp.MustCompilePOSIX(`".+`)
+					if re.MatchString(Tokens[idx+2].lexeme) {
+						term := regexp.MustCompilePOSIX(`.+"`)
+						for term.MatchString(Tokens[idx+2].lexeme) != true {
 							fmt.Printf("%s ", Tokens[idx+2].lexeme)
 							idx += 1
 						}
@@ -278,6 +278,9 @@ func Parse(Tokens []__Token) {
 			break
 
 		case LOOP:
+			if NDEBUG {
+				sound.PlaySound("LOOP_s")
+			}
 			loopBody = idx + 1
 			loopEnd = loopBody
 			for Tokens[loopEnd].__tokenType != LOOP_CLOSE {
@@ -287,9 +290,15 @@ func Parse(Tokens []__Token) {
 			idx += 1
 
 		case BREAK:
+			if NDEBUG {
+				sound.PlaySound("CRASH")
+			}
 			idx = loopEnd
 
 		case LOOP_CLOSE:
+			if NDEBUG {
+				sound.PlaySound("LOOP_c")
+			}
 			idx = loopBody
 
 		default:
