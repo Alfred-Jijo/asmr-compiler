@@ -32,7 +32,6 @@ func Lex(data []byte) []__Token {
 	if DEBUG {
 		for _, token := range tokens {
 			fmt.Println(token.lexeme)
-			printEnumVal(token.__tokenType)
 		}
 		fmt.Println(tokens)
 	}

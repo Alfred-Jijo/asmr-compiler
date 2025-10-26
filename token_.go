@@ -32,7 +32,6 @@ var TokenID = map[__TokenType]string{
 	//variables
 	LDV: "ldv",
 
-
 	PLUS:         "plus",
 	MINUS:        "sulp",
 	EQUAL_EQUAL:  "gcme",
@@ -50,18 +49,15 @@ var TokenID = map[__TokenType]string{
 
 	//selection
 	ELSE: "alt",
-	END:   "end",
+	END:  "end",
 
 	//loop
-	LOOP: "spin",
-	BREAK: "crash",
+	LOOP:       "spin",
+	BREAK:      "crash",
 	LOOP_CLOSE: "flight",
 }
 
 type __Token struct {
 	__tokenType __TokenType
 	lexeme      string
-}
-
-func printEnumVal(toktype __TokenType) {
 }

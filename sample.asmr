@@ -1,25 +1,8 @@
-ldv byte foo 2
-ldv byte bar 3
-
-plus bar bar foo
-sulp bar bar foo
-
-dmp stdout bar
-gcme bar 3
-    dmp stdout 12
-    alt dmp stdout 21
-end
-
-gcmg bar 3
-    dmp stdout 12
-    alt dmp stdout 21
-end
-
 udp stdin foobar
 
 dmp stdout foobar
 
-ldv byte count 5
+ldv byte count foobar
 spin
     gcmg count 0
         sulp count count 1
