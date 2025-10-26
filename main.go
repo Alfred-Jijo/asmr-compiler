@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	DEBUG = false
+	DEBUG  = false
+	NDEBUG = true
 )
 
 func check(e error, printFlag string) {
@@ -30,6 +31,7 @@ func main() {
 	name := os.Args[1]
 	if len(os.Args) > 2 {
 		DEBUG = true
+		NDEBUG = false
 	}
 	if DEBUG {
 		fmt.Printf("Reading file %s\n", name)
