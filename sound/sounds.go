@@ -13,7 +13,6 @@ import (
 func PlaySound(soundName string) {
 	f, err := os.Open("sound/mp3/" + soundName + ".mp3")
 	if err != nil {
-		log.Println(err)
 		return
 	}
 

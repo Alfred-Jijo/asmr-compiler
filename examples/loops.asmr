@@ -1,0 +1,16 @@
+dmp stdout "Fibonacci's Sequence up to 21"
+ldv byte fir 0
+ldv byte sec 1
+
+spin
+    dmp stdout fir
+    plus next fir sec
+    ldv byte fir sec
+    ldv byte sec next
+    gcmg fir 22
+        crash
+    alt
+    end
+flight
+
+

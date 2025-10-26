@@ -42,6 +42,17 @@ sulp dest [var|num] [var|num]
 dmp stream [var|num]
 udp stream [var|num]
 ```
+### Loops
+```asmr
+spin 
+    [conditional]
+        crash
+flight
+```
+
+loops in asmr are infinite by default, you must specify a base case to exit and use the crash keyword to break out of the loop
+flight is used to denote the end of the loop sematically
+
 > [!NOTE]  
 > `stream` for the `dump` and `undump` operations are like `C`:
 >     - `stdin` and `stdout` or `file` 
